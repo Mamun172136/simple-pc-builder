@@ -1,6 +1,7 @@
 import FeaturedCard from "@/components/shared/FeaturedCard";
 import Navbar from "@/components/shared/Navbar";
-import Featured from "./Featured/Featured";
+import Featured from "./featured/Featured";
+import RootLayout from "../../components/Layouts/RootLayout";
 
 const index = ({ motherboards }) => {
   console.log(motherboards);
@@ -36,8 +37,9 @@ const index = ({ motherboards }) => {
   ];
   return (
     <div>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <Featured motherboards={motherboards}></Featured>
+
       <div className=" p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((service) => (
           <FeaturedCard key={service._id} service={service}></FeaturedCard>
@@ -61,4 +63,7 @@ export const getStaticProps = async () => {
   };
 };
 
+index.getLayout = function getLayout(page) {
+  return <RootLayout> {page} </RootLayout>;
+};
 export default index;

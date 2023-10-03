@@ -1,9 +1,7 @@
 import Card from "@/components/shared/Card";
 import React from "react";
-import RootLayout from "../../../components/Layouts/RootLayout";
 
-const motherboard = ({ motherboards }) => {
-  console.log(motherboards);
+const Motherboard2 = ({ motherboards }) => {
   return (
     <div>
       <h1 className="text-3xl p-4">MotherBoard Product</h1>
@@ -16,9 +14,9 @@ const motherboard = ({ motherboards }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   // const res = await fetch("http://localhost:3000/api/news"); // internal API connected with mongoDB
-  const res = await fetch("http://localhost:5000/motherboards"); // --> json server
+  const res = await fetch("http://localhost:5000/motherboard"); // --> json server
   const data = await res.json();
   // console.log(data);
   return {
@@ -30,8 +28,4 @@ export const getStaticProps = async () => {
   };
 };
 
-motherboard.getLayout = function getLayout(page) {
-  return <RootLayout> {page} </RootLayout>;
-};
-
-export default motherboard;
+export default Motherboard2;

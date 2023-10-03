@@ -30,27 +30,30 @@ const Navbar = () => {
               <a>Item 1</a>
             </li>
             <li>
-              <Link href="/"> Parent</Link>
-              <ul className="p-2">
+              <Link href="/"> Category</Link>
+              <ul className="p-2 z-10">
                 <li>
-                  <Link href="motherboard/motherboard">MotherBoard</Link>
+                  <Link href="/motherboard/motherboard">MotherBoard</Link>
                 </li>
                 <li>
-                  <Link href="ram/ram">ram</Link>
+                  <Link href="/ram/ram">ram</Link>
                 </li>
                 <li>
-                  <Link href="cpu/cpu">Cpu</Link>
+                  <Link href="/cpu/cpu">Cpu</Link>
                 </li>
                 <li>
-                  <Link href="monitor/monitor">Monitor</Link>
+                  <Link href="/monitor/monitor">Monitor</Link>
                 </li>
                 <li>
-                  <Link href="powerSupplyUnit/powerSupplyUnit">
+                  <Link href="/powerSupplyUnit/powerSupplyUnit">
                     Power Supply Unit
                   </Link>
                 </li>
                 <li>
-                  <Link href="storage/storage">Storage</Link>
+                  <Link href="/storage/storage">Storage</Link>
+                </li>
+                <li>
+                  <Link href="/others/others">Storage</Link>
                 </li>
               </ul>
             </li>
@@ -68,30 +71,30 @@ const Navbar = () => {
           </li>
           <li tabIndex={0}>
             <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
+              <summary>Category</summary>
+              <ul className="p-2 z-10">
                 <li>
-                  <Link href="motherboard/motherboard">MotherBoard</Link>
+                  <Link href="/motherboard/motherboard">MotherBoard</Link>
                 </li>
                 <li>
-                  <Link href="ram/ram">ram</Link>
+                  <Link href="/ram/ram">Ram</Link>
                 </li>
                 <li>
-                  <Link href="cpu/cpu">Cpu</Link>
+                  <Link href="/cpu/cpu">Cpu</Link>
                 </li>
                 <li>
-                  <Link href="monitor/monitor">Monitor</Link>
+                  <Link href="/monitor/monitor">Monitor</Link>
                 </li>
                 <li>
-                  <Link href="powerSupplyUnit/powerSupplyUnit">
+                  <Link href="/powerSupplyUnit/powerSupplyUnit">
                     Power Supply Unit
                   </Link>
                 </li>
                 <li>
-                  <Link href="storage/storage">Storage</Link>
+                  <Link href="/storage/storage">Storage</Link>
                 </li>
                 <li>
-                  <Link href="others/others">Others</Link>
+                  <Link href="/others/others">Others</Link>
                 </li>
               </ul>
             </details>

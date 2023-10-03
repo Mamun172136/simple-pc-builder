@@ -1,5 +1,6 @@
 import Image from "next/image";
 import motherboard from "./motherboard";
+import RootLayout from "../../../components/Layouts/RootLayout";
 
 const MotherBoardDetailPage = ({ motherboard }) => {
   return (
@@ -95,6 +96,10 @@ export const getStaticProps = async (context) => {
     },
     revalidate: 10,
   };
+};
+
+MotherBoardDetailPage.getLayout = function getLayout(page) {
+  return <RootLayout> {page} </RootLayout>;
 };
 
 export default MotherBoardDetailPage;

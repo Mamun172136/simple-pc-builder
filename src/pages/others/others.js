@@ -1,11 +1,12 @@
 import Card from "@/components/shared/Card";
 import Navbar from "@/components/shared/Navbar";
 import React from "react";
+import RootLayout from "../../../components/Layouts/RootLayout";
 
 const others = ({ motherboards }) => {
   return (
     <div>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <h1 className="text-3xl p-4">Other Product</h1>
       <div className=" p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {motherboards?.data.map((service) => (
@@ -28,6 +29,10 @@ export const getStaticProps = async () => {
     },
     revalidate: 10,
   };
+};
+
+others.getLayout = function getLayout(page) {
+  return <RootLayout> {page} </RootLayout>;
 };
 
 export default others;

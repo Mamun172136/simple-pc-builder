@@ -1,6 +1,7 @@
 import Navbar from "@/components/shared/Navbar";
 import Image from "next/image";
 import React from "react";
+import RootLayout from "../../../components/Layouts/RootLayout";
 
 const otherId = ({ motherboard }) => {
   return (
@@ -101,6 +102,10 @@ export const getStaticProps = async (context) => {
     },
     revalidate: 10,
   };
+};
+
+otherId.getLayout = function getLayout(page) {
+  return <RootLayout> {page} </RootLayout>;
 };
 
 export default otherId;

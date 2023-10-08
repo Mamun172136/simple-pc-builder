@@ -1,5 +1,6 @@
 import Card from "@/components/shared/Card";
 import React from "react";
+import RootLayout from "../../../components/Layouts/RootLayout";
 
 const ram = ({ motherboards }) => {
   return (
@@ -24,8 +25,12 @@ export const getStaticProps = async () => {
       motherboards: data,
       // allNews: data.data, // when using internal API connected with mongoDB
     },
-    revalidate: 10,
+    // revalidate: 10,
   };
+};
+
+ram.getLayout = function getLayout(page) {
+  return <RootLayout> {page} </RootLayout>;
 };
 
 export default ram;

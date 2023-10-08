@@ -62,7 +62,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link href="/">PC BUILDER</Link>
+        <Link href="/"> Simple_PC_BUILDER</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -106,7 +106,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <Link href="/pc-builder/pc-builder" className="btn">
-          Button
+          PC Builder
         </Link>
       </div>
     </div>

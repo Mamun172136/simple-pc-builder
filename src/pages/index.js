@@ -40,6 +40,7 @@ const index = ({ motherboards }) => {
       {/* <Navbar></Navbar> */}
       <Featured motherboards={motherboards}></Featured>
 
+      <h1 className="text-3xl p-4">Category</h1>
       <div className=" p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((service) => (
           <FeaturedCard key={service._id} service={service}></FeaturedCard>
@@ -59,7 +60,7 @@ export const getStaticProps = async () => {
       motherboards: data,
       // allNews: data.data, // when using internal API connected with mongoDB
     },
-    revalidate: 10,
+    // revalidate: 10,
   };
 };
 

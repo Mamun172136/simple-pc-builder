@@ -113,7 +113,7 @@ export const getStaticProps = async (context) => {
       motherboard: data,
       // allNews: data.data, // when using internal API connected with mongoDB
     },
-    revalidate: 10,
+    // revalidate: 10,
   };
 };
 

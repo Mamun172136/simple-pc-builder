@@ -1,10 +1,11 @@
 import Card from "@/components/shared/Card";
 import React from "react";
+import RootLayout from "../../../components/Layouts/RootLayout";
 
 const storage = ({ motherboards }) => {
   return (
     <div>
-      <h1 className="text-3xl p-4">MotherBoard Product</h1>
+      <h1 className="text-3xl p-4">Storage Product</h1>
       <div className=" p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {motherboards?.data.map((service) => (
           <Card key={service.id} service={service}></Card>
@@ -26,6 +27,10 @@ export const getStaticProps = async () => {
     },
     revalidate: 10,
   };
+};
+
+storage.getLayout = function getLayout(page) {
+  return <RootLayout> {page} </RootLayout>;
 };
 
 export default storage;

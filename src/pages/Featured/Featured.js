@@ -14,18 +14,4 @@ const featured = ({ motherboards }) => {
   );
 };
 
-// export const getStaticProps = async () => {
-//   // const res = await fetch("http://localhost:3000/api/news"); // internal API connected with mongoDB
-//   const res = await fetch("http://localhost:5000/featureds"); // --> json server
-//   const data = await res.json();
-//   console.log(data);
-//   return {
-//     props: {
-//       motherboards: data,
-//       // allNews: data.data, // when using internal API connected with mongoDB
-//     },
-//     revalidate: 10,
-//   };
-// };
-
 export default featured;

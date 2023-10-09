@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 const monitorId = ({ motherboard }) => {
+  console.log("monitor id from line 5", motherboard);
   return (
     <div className="mt-4 p-3 grid grid-cols-1 md:grid-cols-2 gap-4">
       {/* Left Column */}
@@ -68,10 +69,10 @@ const monitorId = ({ motherboard }) => {
 
           <h2 className="text-xl font-bold mb-2">Reviews</h2>
           <ul>
-            {motherboard.reviews.map((review, index) => (
+            {motherboard?.reviews.map((review, index) => (
               <li key={index}>
                 <strong>{review?.username}</strong>: {review?.comment} (Rating:{" "}
-                {review.rating})
+                {review?.rating})
               </li>
             ))}
           </ul>
@@ -86,10 +87,13 @@ const monitorId = ({ motherboard }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/monitors");
+  // const res = await fetch("http://localhost:5000/monitors");
+  const res = await fetch(
+    "https://simple-pc-builder-server-theta.vercel.app/monitors"
+  );
   const newses = await res.json();
   console.log(newses);
-  const paths = newses?.data.map((news) => ({
+  const paths = newses?.data?.map((news) => ({
     params: { monitorId: news._id },
   }));
 
@@ -100,13 +104,15 @@ export const getStaticProps = async (context) => {
   const { params } = context;
   // const res = await fetch("http://localhost:3000/api/news"); // internal API connected with mongoDB
 
-  const res = await fetch(`http://localhost:5000/monitor/${params.monitorId}`); // --> json server
+  // const res = await fetch(`http://localhost:5000/monitor/${params.monitorId}`); // --> json server
+  const res = await fetch(
+    `https://simple-pc-builder-server-theta.vercel.app/monitor/${params.monitorId}`
+  ); // --> json server
   const data = await res.json();
   // console.log(data);
   return {
     props: {
       motherboard: data,
-      // allNews: data.data, // when using internal API connected with mongoDB
     },
     // revalidate: 10,
   };

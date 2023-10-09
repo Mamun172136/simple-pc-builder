@@ -78,10 +78,10 @@ const featuredId = ({ motherboard }) => {
 
           <h2 className="text-xl font-bold mb-2">Reviews</h2>
           <ul>
-            {motherboard.reviews.map((review, index) => (
+            {motherboard?.reviews.map((review, index) => (
               <li key={index}>
                 <strong>{review?.username}</strong>: {review?.comment} (Rating:{" "}
-                {review.rating})
+                {review?.rating})
               </li>
             ))}
           </ul>
@@ -96,7 +96,10 @@ const featuredId = ({ motherboard }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/featureds");
+  // const res = await fetch("http://localhost:5000/featureds");
+  const res = await fetch(
+    "https://simple-pc-builder-server-theta.vercel.app/featureds"
+  );
   const newses = await res.json();
   console.log(newses);
   const paths = newses?.data.map((news) => ({
@@ -120,7 +123,7 @@ export const getStaticProps = async (context) => {
       motherboard: data,
       // allNews: data.data, // when using internal API connected with mongoDB
     },
-    revalidate: 10,
+    // revalidate: 10,
   };
 };
 

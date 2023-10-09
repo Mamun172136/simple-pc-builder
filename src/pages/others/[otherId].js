@@ -1,12 +1,12 @@
-import Navbar from "@/components/shared/Navbar";
+// import Navbar from "@/components/shared/Navbar";
 import Image from "next/image";
 import React from "react";
-import RootLayout from "../../../components/Layouts/RootLayout";
+// import RootLayout from "../../../components/Layouts/RootLayout";
 
 const otherId = ({ motherboard }) => {
   return (
     <div>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <div className="mt-4 p-3 grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Left Column */}
         <div>
@@ -59,10 +59,10 @@ const otherId = ({ motherboard }) => {
 
             <h2 className="text-xl font-bold mb-2">Reviews</h2>
             <ul>
-              {motherboard.reviews.map((review, index) => (
+              {motherboard?.reviews.map((review, index) => (
                 <li key={index}>
                   <strong>{review?.username}</strong>: {review?.comment}{" "}
-                  (Rating: {review.rating})
+                  (Rating: {review?.rating})
                 </li>
               ))}
             </ul>
@@ -78,7 +78,10 @@ const otherId = ({ motherboard }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/others");
+  // const res = await fetch("http://localhost:5000/others");
+  const res = await fetch(
+    "https://simple-pc-builder-server-theta.vercel.app/others"
+  );
   const newses = await res.json();
   console.log(newses);
   const paths = newses?.data.map((news) => ({
@@ -92,7 +95,10 @@ export const getStaticProps = async (context) => {
   const { params } = context;
   // const res = await fetch("http://localhost:3000/api/news"); // internal API connected with mongoDB
 
-  const res = await fetch(`http://localhost:5000/other/${params.otherId}`); // --> json server
+  // const res = await fetch(`http://localhost:5000/other/${params.otherId}`); // --> json server
+  const res = await fetch(
+    `https://simple-pc-builder-server-theta.vercel.app/other/${params.otherId}`
+  ); // --> json server
   const data = await res.json();
   // console.log(data);
   return {
@@ -100,12 +106,12 @@ export const getStaticProps = async (context) => {
       motherboard: data,
       // allNews: data.data, // when using internal API connected with mongoDB
     },
-    revalidate: 10,
+    // revalidate: 10,
   };
 };
 
-otherId.getLayout = function getLayout(page) {
-  return <RootLayout> {page} </RootLayout>;
-};
+// otherId.getLayout = function getLayout(page) {
+//   return <RootLayout> {page} </RootLayout>;
+// };
 
 export default otherId;

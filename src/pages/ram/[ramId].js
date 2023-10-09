@@ -62,10 +62,10 @@ const ramId = ({ motherboard }) => {
 
           <h2 className="text-xl font-bold mb-2">Reviews</h2>
           <ul>
-            {motherboard.reviews.map((review, index) => (
+            {motherboard?.reviews.map((review, index) => (
               <li key={index}>
                 <strong>{review?.username}</strong>: {review?.comment} (Rating:{" "}
-                {review.rating})
+                {review?.rating})
               </li>
             ))}
           </ul>
@@ -80,7 +80,10 @@ const ramId = ({ motherboard }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/rams");
+  // const res = await fetch("http://localhost:5000/rams");
+  const res = await fetch(
+    "https://simple-pc-builder-server-theta.vercel.app/rams"
+  );
   const newses = await res.json();
   console.log(newses);
   const paths = newses?.data.map((news) => ({
@@ -94,7 +97,10 @@ export const getStaticProps = async (context) => {
   const { params } = context;
   // const res = await fetch("http://localhost:3000/api/news"); // internal API connected with mongoDB
 
-  const res = await fetch(`http://localhost:5000/ram/${params.ramId}`); // --> json server
+  // const res = await fetch(`http://localhost:5000/ram/${params.ramId}`); // --> json server
+  const res = await fetch(
+    `https://simple-pc-builder-server-theta.vercel.app/ram/${params.ramId}`
+  ); // --> json server
   const data = await res.json();
   // console.log(data);
   return {

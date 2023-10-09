@@ -3,6 +3,7 @@ import React from "react";
 import RootLayout from "../../../components/Layouts/RootLayout";
 
 const monitor = ({ motherboards }) => {
+  console.log("monitor from line 6", motherboards);
   return (
     <div>
       <h1 className="text-3xl p-4">Monitor Product</h1>
@@ -17,7 +18,10 @@ const monitor = ({ motherboards }) => {
 
 export const getStaticProps = async () => {
   // const res = await fetch("http://localhost:3000/api/news"); // internal API connected with mongoDB
-  const res = await fetch("http://localhost:5000/monitors"); // --> json server
+  // const res = await fetch("http://localhost:5000/monitors"); // --> json server
+  const res = await fetch(
+    "https://simple-pc-builder-server-theta.vercel.app/monitors"
+  ); // --> json server
   const data = await res.json();
   // console.log(data);
   return {

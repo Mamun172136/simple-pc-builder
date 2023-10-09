@@ -8,7 +8,7 @@ const MotherBoardDetailPage = ({ motherboard }) => {
       {/* Left Column */}
       <div>
         <Image
-          src={motherboard.image}
+          src={motherboard?.image}
           alt="Motherboard"
           width={500}
           height={300}
@@ -19,43 +19,43 @@ const MotherBoardDetailPage = ({ motherboard }) => {
 
       {/* Right Column */}
       <div>
-        <h1 className="text-3xl font-bold mb-4">{motherboard.productName}</h1>
-        <p className="text-gray-700 mb-2">Category: {motherboard.category}</p>
-        <p className="text-gray-700 mb-2">Status: {motherboard.status}</p>
-        <p className="text-gray-700 mb-2">Price: ${motherboard.price}</p>
+        <h1 className="text-3xl font-bold mb-4">{motherboard?.productName}</h1>
+        <p className="text-gray-700 mb-2">Category: {motherboard?.category}</p>
+        <p className="text-gray-700 mb-2">Status: {motherboard?.status}</p>
+        <p className="text-gray-700 mb-2">Price: ${motherboard?.price}</p>
         <p className="text-gray-700 mb-2">
-          Description: {motherboard.description}
+          Description: {motherboard?.description}
         </p>
 
         {/* Key Features */}
         <div className="mb-4">
           <h2 className="text-xl font-bold mb-2">Key Features</h2>
           <ul className="list-disc list-inside">
-            <li>Brand: {motherboard.keyFeatures.brand}</li>
-            <li>Model: {motherboard.keyFeatures.model}</li>
-            <li>Specification: {motherboard.keyFeatures.specification}</li>
-            <li>Port: {motherboard.keyFeatures.port}</li>
-            <li>Type: {motherboard.keyFeatures.type}</li>
-            <li>Resolution: {motherboard.keyFeatures.resolution}</li>
-            <li>Voltage: {motherboard.keyFeatures.voltage}</li>
+            <li>Brand: {motherboard?.keyFeatures?.brand}</li>
+            <li>Model: {motherboard?.keyFeatures?.model}</li>
+            <li>Specification: {motherboard?.keyFeatures?.specification}</li>
+            <li>Port: {motherboard?.keyFeatures?.port}</li>
+            <li>Type: {motherboard?.keyFeatures?.type}</li>
+            <li>Resolution: {motherboard?.keyFeatures?.resolution}</li>
+            <li>Voltage: {motherboard?.keyFeatures?.voltage}</li>
           </ul>
         </div>
 
         {/* Ratings and Reviews */}
         <div>
           <p className="text-gray-700 mb-2">
-            Individual Rating: {motherboard.individualRating} Stars
+            Individual Rating: {motherboard?.individualRating} Stars
           </p>
           <p className="text-gray-700 mb-2">
-            Average Rating: {motherboard.averageRating} Stars
+            Average Rating: {motherboard?.averageRating} Stars
           </p>
 
           <h2 className="text-xl font-bold mb-2">Reviews</h2>
           <ul>
-            {motherboard.reviews.map((review, index) => (
+            {motherboard?.reviews.map((review, index) => (
               <li key={index}>
-                <strong>{review.username}</strong>: {review.comment} (Rating:{" "}
-                {review.rating})
+                <strong>{review?.username}</strong>: {review?.comment} (Rating:{" "}
+                {review?.rating})
               </li>
             ))}
           </ul>
@@ -70,7 +70,10 @@ const MotherBoardDetailPage = ({ motherboard }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/motherboards");
+  // const res = await fetch("http://localhost:5000/motherboards");
+  const res = await fetch(
+    "https://simple-pc-builder-server-theta.vercel.app/motherboards"
+  );
   const newses = await res.json();
   console.log(newses);
   const paths = newses?.data.map((news) => ({
@@ -94,7 +97,7 @@ export const getStaticProps = async (context) => {
       motherboard: data,
       // allNews: data.data, // when using internal API connected with mongoDB
     },
-    revalidate: 10,
+    // revalidate: 10,
   };
 };
 
